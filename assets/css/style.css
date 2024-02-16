@@ -1,5 +1,5 @@
 :root {
-    --text-light: #000000;
+    --text-light: #ffffff;
 }
 html {
     font-family: 'Open Sans', sans-serif;
@@ -14,6 +14,7 @@ html {
     margin: 0 auto;
     display: grid;
     /* použijte auto-fit s šířkou sloupce minimálně 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding: 1em;
     gap: 1em;
 }
@@ -21,6 +22,8 @@ html {
     position: relative;
     color: inherit;
     /* max-height: 80vh; */
+    overflow: hidden;
+
 }
 .categories__item:hover {
     box-shadow: 0 0 8px 2px var(--text-light);
@@ -51,4 +54,45 @@ figure, h2 {
     text-transform: uppercase;
     font-size: 2em;
     color: var(--text-light);
+}
+ 
+.categories:not(:has(a:hover)) img {
+    filter: blur(0px);
+}
+a.categories__item img{
+    filter: blur(4px);
+
+}
+a.categories__item:hover img{
+    filter: blur(0px);
+}
+.categories__item-description{
+    transition: bottom 0.3s ease, left 0.3s ease, translate 0.3s ease;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    white-space: nowrap;
+}
+
+.categories__item:hover .categories__item-description{
+    position: absolute;
+    bottom:50%;
+    left:50%;
+    translate:-50% 50%; 
+}
+a.categories__item {
+    position: relative;
+    transition:scale 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+.categories__item:hover {
+    scale: 1.05;
+}
+
+.page-header{
+    background-image: url(../images/egypt.jpg);
+    background-size: cover;
 }
